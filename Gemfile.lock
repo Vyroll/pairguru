@@ -317,6 +317,3 @@ DEPENDENCIES
   spring-commands-rspec
   sqlite3
   uglifier
-
-BUNDLED WITH
-   1.16.1
