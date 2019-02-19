@@ -3,3 +3,23 @@
   = @movie.description
 - if user_signed_in?
   %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+  %h2= 'Leave your comment:'
+  .row
+    = form_for @comment, :html => {:class => "col-md-4"} do |f|
+      .form-group
+        = f.text_area :text, class: "form-control", placeholder: "leave your comment"
+      .field
+        = f.hidden_field :movie_id
+      .actions
+        = f.submit "Comment", class: "btn btn-default btn-primary"
+    
+%h2= 'Comments:'
+%table.table.table-striped
+  %tbody
+    - @comments.each_with_index do |comment, i|
+      %tr
+        %td{style:"width: 15%"}
+          %strong= comment.user.name
+          %br/
+          %small= comment.movie.created_at.strftime("%F %T")
+        %td= comment.text

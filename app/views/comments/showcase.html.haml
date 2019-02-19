@@ -1,0 +1,14 @@
+%h1 Top commenters
+%p Table below shows Top 10 commenters ranked by highest amount of comments in last 7 days.
+.row
+    .col-md-3
+        %table.table.table-striped
+            %thead
+                %tr
+                    %th User
+                    %th Comments
+            %tbody
+                - @users.each_with_index do |user, i|
+                    %tr
+                        %td= user.name
+                        %td= user.comments.count
