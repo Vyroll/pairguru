@@ -15,4 +15,9 @@ Rails.application.routes.draw do
       get :export
     end
   end
+  resources :comments, only: [:index, :create, :destroy] do
+    collection do
+      get :showcase
+    end
+  end
 end
